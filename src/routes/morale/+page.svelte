@@ -1,0 +1,1 @@
+<!--rozpoznawanie twarzy, info z nich, ocena morali, Julka-->

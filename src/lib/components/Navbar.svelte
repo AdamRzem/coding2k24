@@ -4,8 +4,8 @@
 
 <Navbar>
   <NavBrand href="/">
-    <img src="/images/flowbite-svelte-icon-logo.svg" class="me-3 h-6 sm:h-9" alt="Flowbite Logo" />
-    <span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite</span>
+    <img src="/R_H.png" class="me-3 h-6 sm:h-9" alt="RH Logo" />
+    <span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">RedHaven</span>
   </NavBrand>
   <div class="flex items-center md:order-2">
     <Avatar id="avatar-menu" src="/images/profile-picture-3.webp" />
@@ -23,11 +23,10 @@
     <DropdownItem>Sign out</DropdownItem>
   </Dropdown>
   <NavUl>
-    <NavLi href="/" activeClass="active">Home</NavLi>
-    <NavLi href="/about">About</NavLi>
-    <NavLi href="/docs/components/navbar">Navbar</NavLi>
-    <NavLi href="/pricing">Pricing</NavLi>
-    <NavLi href="/contact">Contact</NavLi>
+    <NavLi href="/about">About</NavLi> 
+    <NavLi href="/morale">Morale</NavLi>
+    <NavLi href="/stationInfo">Station Info</NavLi>
+    <!-- <NavLi href="/contact">Contact</NavLi> -->
     <DarkMode />
   </NavUl>
 </Navbar>

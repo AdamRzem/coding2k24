@@ -1,0 +1,1 @@
+<!-- kosmita gadający, Michał-->
