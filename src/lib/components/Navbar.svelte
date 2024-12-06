@@ -33,7 +33,7 @@
     <DropdownItem>Settings</DropdownItem>
     <DropdownItem>Earnings</DropdownItem>
     <DropdownDivider /> -->
-    <form action="/demo/lucia/?logout" method="post">
+    <form action="/demo/lucia/?/logout" method="post">
       <DropdownItem type="submit">Sign out</DropdownItem>
     </form>
   </Dropdown>
