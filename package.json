@@ -28,6 +28,8 @@
 		"vite": "^6.0.0"
 	},
 	"dependencies": {
+		"@dicebear/collection": "^9.2.2",
+		"@dicebear/core": "^9.2.2",
 		"@node-rs/argon2": "^1.1.0",
 		"@oslojs/crypto": "^1.0.1",
 		"@oslojs/encoding": "^1.1.0",
