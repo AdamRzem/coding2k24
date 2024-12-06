@@ -1,4 +1,5 @@
-import { pgTable, serial, text, integer, timestamp } from 'drizzle-orm/pg-core';
+
+import { pgTable, serial, text, integer, timestamp, doublePrecision } from 'drizzle-orm/pg-core';
 
 export const user = pgTable('user', {
     id: text('id').primaryKey(),
@@ -11,6 +12,13 @@ export const session = pgTable("session", {
     id: text('id').primaryKey(),
     userId: text('user_id').notNull().references(() => user.id),
     expiresAt: timestamp('expires_at', { withTimezone: true, mode: 'date' }).notNull()
+});
+
+export const read = pgTable('read', {
+    id: serial('id').primaryKey(),
+    temp: doublePrecision('temp'),
+    humid: doublePrecision('humid'),
+    time: timestamp('time').defaultNow()
 });
 
 export type Session = typeof session.$inferSelect;
