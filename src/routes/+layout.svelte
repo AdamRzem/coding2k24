@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '../app.css';
-	import Map from './components/Map.svelte';
-	import Navbar from './components/Navbar.svelte';
+	import Map from '$lib/components/Map.svelte';
+	import Navbar from '$lib/components/Navbar.svelte';
 	let { children } = $props();
 </script>
 
@@ -27,3 +27,5 @@
 	<footer class="bg-slate-100 dark:bg-gray-800 p-4 text-white text-center relative bottom-0 mt-2.5">
 		<Map />
 	</footer>
+
+	
