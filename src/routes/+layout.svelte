@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '../app.css';
-	import Map from './components/Map.svelte';
-	import Navbar from './components/Navbar.svelte';
+	import Map from '$lib/components/Map.svelte';
+	import Navbar from '$lib/components/Navbar.svelte';
 	let { children } = $props();
 </script>
 
