@@ -13,14 +13,14 @@
 	let svg = $derived(avatar.toDataUri());
 </script>
 
-<Navbar  {svg} email={data.user?.username}/>
+<Navbar {svg} email={data.user?.username} />
 {@render children()}
 
-<footer
+<!-- <footer
 	class="bg-slate-100 dark:bg-gray-800 p-4 text-white text-center relative bottom-0 mt-2.5"
 >
-	<Map />
-</footer>
+	<Map /> 
+</footer> -->
 
 <style>
 	:global(html) {
