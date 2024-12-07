@@ -21,7 +21,7 @@ cv.waitKey(0)
 # image.save(temp_image_path)
 
 # Perform emotion analysis
-analysis = DeepFace.analyze(img_path=image, actions=["emotion"])
+analysis = DeepFace.analyze(img_path=image, actions=["emotion"],enforce_detection=False)
 analysis = analysis[0]
 # Extract emotions and dominant emotion
 emotions:dict[np.float32] = analysis["emotion"]
@@ -36,7 +36,7 @@ print(type(dominant_emotion))
 # os.remove(temp_image_path)
 emotions = {str(k): float(v) for k, v in emotions.items()}
 
-requests.post("http://localhost:5173/cam", json={**emotions, "dominant_emotion": dominant_emotion})
+requests.post("http://localhost:5173/cam", json={**emotions, "dominantEmotion": dominant_emotion})
 #requests
 # return JSONResponse(content={
 #     "emotions":emotions,
