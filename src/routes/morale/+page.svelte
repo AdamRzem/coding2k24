@@ -1,15 +1,31 @@
 <script lang="ts">
-    import { onMount } from "svelte";
+    import { onMount, onDestroy } from "svelte";
     import type { PageServerData } from "./$types";
     import { Chart } from "flowbite-svelte";
+
+    let audio: HTMLAudioElement | null = null;
+    let isPlaying = false;
+
     onMount(() => {
-        const audio = new Audio("NagraniaCoding/Morale.mp3"); // Upewnij się, że ścieżka do pliku jest poprawna
+        // Initialize and play the sound
+        audio = new Audio("NagraniaCoding/Morale.mp3"); // Ensure the file path is correct
         audio.play().catch((error) => {
             console.error("Audio playback failed:", error);
         });
     });
+
+    onDestroy(() => {
+        // Stop and reset the audio
+        if (audio) {
+            audio.pause();
+            audio.currentTime = 0; // Reset playback position
+            audio = null;
+        }
+    });
+
     let { data }: { data: PageServerData } = $props();
     console.log(data.resp);
+
     let group: ApexCharts.ApexOptions = {
         chart: {
             type: "bar",
@@ -26,13 +42,26 @@
         },
         series: [
             {
-                // name: "Morale",
-                data: data.resp.map((reading) => {
-                    return { x: reading.emotion??"null", y: reading.cnt };
-                }),
+                data: data.resp ? data.resp.map((reading) => {
+                    return { x: reading.emotion ?? "null", y: reading.cnt };
+                }) : [],
             },
         ],
     };
+
+    function toggleAudio() {
+        if (audio) {
+            if (isPlaying) {
+                audio.pause();
+            } else {
+                audio.play().catch((error) => {
+                    console.error("Audio playback failed:", error);
+                });
+            }
+            isPlaying = !isPlaying;
+        }
+    }
 </script>
 
+<button on:click="{toggleAudio}">{isPlaying ? 'Pause Audio' : 'Play Audio'}</button>
 <Chart options={group}></Chart>
