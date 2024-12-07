@@ -27,7 +27,10 @@
   <Dropdown placement="bottom" triggeredBy="#avatar-menu">
     <DropdownHeader>
       <!-- <span class="block text-sm">Bonnie Green</span> -->
-      <span class="block truncate text-sm font-medium">{email}</span>
+      <!-- <span class="block truncate text-sm font-medium"> -->
+        {email}
+
+      <!-- </span> -->
     </DropdownHeader>
     <!-- <DropdownItem>Dashboard</DropdownItem>
     <DropdownItem>Settings</DropdownItem>
