@@ -1,7 +1,7 @@
 
 import { pgTable, serial, text, integer, timestamp, doublePrecision, pgEnum } from 'drizzle-orm/pg-core';
 
-export const emotionEnum = pgEnum('emotion', ['anger', 'fear', 'neutral', 'sad', 'disgust', 'happy', 'surprise']);
+export const emotionEnum = pgEnum('emotion', ['angry', 'fear', 'neutral', 'sad', 'disgust', 'happy', 'surprise']);
 export const user = pgTable('user', {
     id: text('id').primaryKey(),
     age: integer('age'),
@@ -24,14 +24,14 @@ export const read = pgTable('read', {
 
 export const morale = pgTable('morale', {
     id: serial('id').primaryKey(),
-    anger: doublePrecision('anger'),
+    anger: doublePrecision('angry'),
     fear: doublePrecision('fear'),
     neutral: doublePrecision('neutral'),
     sad: doublePrecision('sad'),
     disgust: doublePrecision('disgust'),
     happy: doublePrecision('happy'),
     surprise: doublePrecision('surprise'),
-    dominantEmoption: emotionEnum("dominant_emotion"),
+    dominantEmotion: emotionEnum("dominant_emotion"),
     time: timestamp('time').defaultNow()
 });
 
