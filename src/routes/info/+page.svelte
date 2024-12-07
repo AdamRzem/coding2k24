@@ -17,7 +17,7 @@
     });
 
     let audio: HTMLAudioElement | null = null;
-    let isPlaying = false;
+    let isPlaying = $state(true);
 
     // Manage audio playback
     onMount(() => {
@@ -120,9 +120,9 @@
     <Button type="submit">Submit</Button>
 </form>
 
-<button on:click="{toggleAudio}">
+<Button on:click="{toggleAudio}" class="m-3">
     {isPlaying ? 'Pause Audio' : 'Play Audio'}
-</button>
+</Button>
 
 <Chart options={temp}></Chart>
 <Chart options={hum}></Chart>

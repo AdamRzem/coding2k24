@@ -3,9 +3,9 @@
 import { db } from '$lib/server/db';
 import type { PageServerLoad } from './$types';
 import * as table from "$lib/server/db/schema"
-import { desc } from 'drizzle-orm';
+import { count, desc } from 'drizzle-orm';
 
 export const load: PageServerLoad = async (event) => {
-  const res=await db.select().from(table.read).orderBy(desc(table.read.time)).limit(1)
-  return {read:res[0]}
+  const res = await db.select({ count: count() }).from(table.user)
+  return {user:res[0]}
 };

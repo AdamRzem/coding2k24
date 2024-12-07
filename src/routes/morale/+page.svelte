@@ -2,9 +2,10 @@
     import { onMount, onDestroy } from "svelte";
     import type { PageServerData } from "./$types";
     import { Chart } from "flowbite-svelte";
+    import { Button } from "flowbite-svelte";
 
     let audio: HTMLAudioElement | null = null;
-    let isPlaying = false;
+    let isPlaying = $state(true);
 
     onMount(() => {
         // Initialize and play the sound
@@ -63,5 +64,7 @@
     }
 </script>
 
-<button on:click="{toggleAudio}">{isPlaying ? 'Pause Audio' : 'Play Audio'}</button>
+<Button on:click="{toggleAudio}" class="m-3">
+    {isPlaying ? 'Pause Audio' : 'Play Audio'}
+</Button>
 <Chart options={group}></Chart>
