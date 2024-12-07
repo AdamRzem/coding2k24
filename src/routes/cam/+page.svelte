@@ -1,1 +1,1 @@
-<img src="http://192.168.137.146/" width="725" height="543">
+<img src="http://192.168.137.146/" width="725" height="543" alt="nie wiem">
