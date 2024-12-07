@@ -5,6 +5,7 @@
     import { enhance } from "$app/forms";
     import type { ActionData } from "./$types";
     import { invalidate, invalidateAll } from "$app/navigation";
+    import * as Icon from 'flowbite-svelte-icons';
 
     let { data, form }: { data: PageServerData; form: ActionData } = $props();
 
@@ -121,7 +122,11 @@
 </form>
 
 <Button on:click="{toggleAudio}" class="m-3">
-    {isPlaying ? 'Pause Audio' : 'Play Audio'}
+    {#if isPlaying}
+        <Icon.VolumeUpOutline />
+    {:else}
+    <Icon.VolumeMuteOutline />
+    {/if}
 </Button>
 
 <Chart options={temp}></Chart>

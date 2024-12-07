@@ -3,6 +3,7 @@
     import type { PageServerData } from "./$types";
     import { Chart } from "flowbite-svelte";
     import { Button } from "flowbite-svelte";
+    import * as Icon from 'flowbite-svelte-icons';
 
     let audio: HTMLAudioElement | null = null;
     let isPlaying = $state(true);
@@ -69,8 +70,13 @@
     }
 </script>
 
-<Button on:click={toggleAudio} class="m-3">
-    {isPlaying ? "Pause Audio" : "Play Audio"}
+
+<Button on:click="{toggleAudio}" class="m-3">
+    {#if isPlaying}
+        <Icon.VolumeUpOutline />
+    {:else}
+    <Icon.VolumeMuteOutline />
+    {/if}
 </Button>
 <Chart options={group}></Chart>
 <form method="post">
