@@ -1,15 +1,10 @@
 <script lang="ts">
-  import 'flowbite-svelte';
-  export let data: { [key: string]: any }[];
+    import type { PageData, PageServerData } from "./$types";
+
+  let {data}:{data:PageServerData}=$props()
 </script>
 
 <h1>Data from PostgreSQL</h1>
-{#if data.length > 0}
-  <ul>
-    {#each data as item}
-      <li>{item}</li>
-    {/each}
-  </ul>
-{:else}
-  <p>No data available.</p>
-{/if}
+
+{data.read.temp}
+{data.read.humid}
