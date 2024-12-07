@@ -43,9 +43,14 @@
         },
         series: [
             {
-                data: data.resp ? data.resp.map((reading) => {
-                    return { x: reading.emotion ?? "null", y: reading.cnt };
-                }) : [],
+                data: data.resp
+                    ? data.resp.map((reading) => {
+                          return {
+                              x: reading.emotion ?? "null",
+                              y: reading.cnt,
+                          };
+                      })
+                    : [],
             },
         ],
     };
@@ -64,7 +69,10 @@
     }
 </script>
 
-<Button on:click="{toggleAudio}" class="m-3">
-    {isPlaying ? 'Pause Audio' : 'Play Audio'}
+<Button on:click={toggleAudio} class="m-3">
+    {isPlaying ? "Pause Audio" : "Play Audio"}
 </Button>
 <Chart options={group}></Chart>
+<form method="post">
+    <Button type="submit">Photo</Button>
+</form>
