@@ -4,7 +4,6 @@
     import type { PageServerData } from "./$types";
     import { enhance } from "$app/forms";
     import type { ActionData } from "./$types";
-    import { onMount } from "svelte";
     import { invalidate, invalidateAll } from "$app/navigation";
     let { data, form }: { data: PageServerData; form: ActionData } = $props();
     onMount(() => {
@@ -80,7 +79,7 @@
     });
 </script>
 
-<Heading size="h1">Welcome to the Station Info Page</Heading>
+<Heading>Welcome to the Station Info Page</Heading>
 <form method="post" use:enhance>
     <label for="from">From:</label>
     <input type="datetime-local" name="from" id="from" />
