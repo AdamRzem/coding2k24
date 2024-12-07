@@ -1,5 +1,5 @@
-from fastapi import FastAPI, UploadFile, File
-from fastapi.responses import JSONResponse
+# from fastapi import FastAPI, UploadFile, File
+# from fastapi.responses import JSONResponse
 from deepface import DeepFace  
 from PIL import Image 
 import tensorflow as tf
@@ -10,12 +10,13 @@ from io import BytesIO
 
 # Load the image
 print("hello")
-# respose = requests.get("http://192.168.137.220/", stream=True, timeout=10)
-cap = cv.VideoCapture("http://192.168.137.59:4747/video")
+# respose = requests.get("http://192.168.137.220W/", stream=True, timeout=10)
+cap = cv.VideoCapture(0)
 ret, image = cap.read()
-print(ret)
-print(image)
-
+# print(ret)
+# print(image)
+cv.imshow("image", image)
+cv.waitKey(0)
 # temp_image_path = "tak.jpg"  # Save it temporarily in the current directory
 # image.save(temp_image_path)
 
