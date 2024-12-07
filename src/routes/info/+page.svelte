@@ -8,19 +8,20 @@
 
     let { data, form }: { data: PageServerData; form: ActionData } = $props();
 
-    // Odświeżanie danych co 10 sekund
+    // Refresh data every 10 seconds
     onMount(() => {
         const interval = setInterval(() => {
             invalidateAll();
         }, 10000);
-        return () => clearInterval(interval); // Czyszczenie interwału po zniszczeniu komponentu
+        return () => clearInterval(interval); // Clean up the interval when the component is destroyed
     });
 
     let audio: HTMLAudioElement | null = null;
+    let isPlaying = false;
 
-    // Zarządzanie odtwarzaniem dźwięku
+    // Manage audio playback
     onMount(() => {
-        audio = new Audio('NagraniaCoding/InfoStation.mp3'); // Ścieżka do pliku
+        audio = new Audio('NagraniaCoding/InfoStation.mp3'); // Path to the file
         audio.play().catch((error) => {
             console.error("Audio playback failed:", error);
         });
@@ -29,10 +30,23 @@
     onDestroy(() => {
         if (audio) {
             audio.pause();
-            audio.currentTime = 0; // Reset odtwarzania
+            audio.currentTime = 0; // Reset playback
             audio = null;
         }
     });
+
+    function toggleAudio() {
+        if (audio) {
+            if (isPlaying) {
+                audio.pause();
+            } else {
+                audio.play().catch((error) => {
+                    console.error("Audio playback failed:", error);
+                });
+            }
+            isPlaying = !isPlaying;
+        }
+    }
 
     let readings = $derived(form ? form.readings : data.readings);
 
@@ -105,6 +119,10 @@
     <input type="datetime-local" name="to" id="to" />
     <Button type="submit">Submit</Button>
 </form>
+
+<button on:click="{toggleAudio}">
+    {isPlaying ? 'Pause Audio' : 'Play Audio'}
+</button>
 
 <Chart options={temp}></Chart>
 <Chart options={hum}></Chart>
