@@ -11,7 +11,9 @@
     });
 </script>
 
-<h1>Data from PostgreSQL</h1>
 
-{data.read.temp}
-{data.read.humid}
+
+<div class="p-4 light:bg-gray-100 dark:bg-gray-600 rounded-lg shadow-md mt-4 ml-3 mr-3">
+    <p class="text-xl font-semibold">Temperature: {data.read.temp}°C</p>
+    <p class="text-xl font-semibold">Humidity: {data.read.humid}%</p>
+</div>
