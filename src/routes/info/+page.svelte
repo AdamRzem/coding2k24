@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { onMount } from "svelte";
     import { Button, Chart, Heading, RadioButton } from "flowbite-svelte";
     import type { PageServerData } from "./$types";
     import { enhance } from "$app/forms";
@@ -70,6 +71,12 @@
         dataLabels: {
             enabled: false,
         },
+    });
+    onMount(() => {
+        const audio = new Audio('NagraniaCoding/InfoStation.mp3'); // Upewnij się, że ścieżka do pliku jest poprawna
+        audio.play().catch((error) => {
+            console.error("Audio playback failed:", error);
+        });
     });
 </script>
 
