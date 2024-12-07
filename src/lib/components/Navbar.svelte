@@ -41,7 +41,7 @@
     <NavLi href="/">Home</NavLi>
     <NavLi href="/about">About</NavLi>
     <NavLi href="/morale">Morale</NavLi>
-    <NavLi href="/stationInfo">Station Info</NavLi>
+    <NavLi href="/info">Station Info</NavLi>
     <!-- <NavLi href="/contact">Contact</NavLi> -->
   </NavUl>
   <div class="flex items-center md:order-2">
