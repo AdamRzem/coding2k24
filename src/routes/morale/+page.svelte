@@ -4,20 +4,21 @@
     import { Chart } from "flowbite-svelte";
 
     let audio: HTMLAudioElement | null = null;
+    let isPlaying = false;
 
     onMount(() => {
-        // Inicjalizacja i odtwarzanie dźwięku
-        audio = new Audio("NagraniaCoding/Morale.mp3"); // Upewnij się, że ścieżka do pliku jest poprawna
+        // Initialize and play the sound
+        audio = new Audio("NagraniaCoding/Morale.mp3"); // Ensure the file path is correct
         audio.play().catch((error) => {
             console.error("Audio playback failed:", error);
         });
     });
 
     onDestroy(() => {
-        // Zatrzymywanie i resetowanie odtwarzania dźwięku
+        // Stop and reset the audio
         if (audio) {
             audio.pause();
-            audio.currentTime = 0; // Reset pozycji odtwarzania
+            audio.currentTime = 0; // Reset playback position
             audio = null;
         }
     });
@@ -41,13 +42,26 @@
         },
         series: [
             {
-                // name: "Morale",
-                data: data.resp.map((reading) => {
+                data: data.resp ? data.resp.map((reading) => {
                     return { x: reading.emotion ?? "null", y: reading.cnt };
-                }),
+                }) : [],
             },
         ],
     };
+
+    function toggleAudio() {
+        if (audio) {
+            if (isPlaying) {
+                audio.pause();
+            } else {
+                audio.play().catch((error) => {
+                    console.error("Audio playback failed:", error);
+                });
+            }
+            isPlaying = !isPlaying;
+        }
+    }
 </script>
 
+<button on:click="{toggleAudio}">{isPlaying ? 'Pause Audio' : 'Play Audio'}</button>
 <Chart options={group}></Chart>
