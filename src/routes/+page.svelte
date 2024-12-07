@@ -2,6 +2,7 @@
     import { onMount, onDestroy } from "svelte";
     import type { PageData, PageServerData } from "./$types";
     import { Button } from "flowbite-svelte";
+    import * as Icon from 'flowbite-svelte-icons';
 
     let { data }: { data: PageServerData } = $props();
 
@@ -39,7 +40,11 @@
     }
 </script>
 <Button on:click="{toggleAudio}" class="m-3">
-    {isPlaying ? 'Pause Audio' : 'Play Audio'}
+    {#if isPlaying}
+        <Icon.VolumeUpOutline />
+    {:else}
+    <Icon.VolumeMuteOutline />
+    {/if}
 </Button>
 <div class="container w-70% h-auto align-middle items-center justify-center mx-auto my-8 space-y-4 text-lg">
     <p>
